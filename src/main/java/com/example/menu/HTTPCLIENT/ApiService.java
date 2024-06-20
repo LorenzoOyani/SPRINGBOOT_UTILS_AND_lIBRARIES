@@ -1,4 +1,4 @@
-package com.example.menu.httpClientCalll;
+package com.example.menu.HTTPCLIENT;
 
 import org.springframework.stereotype.Service;
 
