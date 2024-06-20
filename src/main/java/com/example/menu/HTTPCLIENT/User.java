@@ -1,7 +1,7 @@
 package com.example.menu.HTTPCLIENT;
 
 /**
- *
+ * @record - a record representation of a Json objects
  * */
 
 public record User(

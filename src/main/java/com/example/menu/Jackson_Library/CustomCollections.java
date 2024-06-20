@@ -1,6 +1,5 @@
 package com.example.menu.Jackson_Library;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 
@@ -11,18 +10,22 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 
-
 public class CustomCollections {
 
+    private  ObjectMapper mapper;
+
+    CustomCollections() {
+    }
+
+
     /**
-     * @throws java.io.IOException if there is a error processing the JSON
-     *
+     * @throws java.io.IOException if there is an error processing the JSON
      **/
-    public static void main(String[] args) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
-        mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
-        mapper.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
+    public void main(String[] args) throws IOException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+//        mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+//        mapper.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
 
         TypeFactory typeFactory = mapper.getTypeFactory();
 
@@ -38,4 +41,4 @@ public class CustomCollections {
     }
 
 }
-    }
+
