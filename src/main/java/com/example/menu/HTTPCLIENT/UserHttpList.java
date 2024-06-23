@@ -1,6 +1,5 @@
 package com.example.menu.HTTPCLIENT;
 
-import com.example.menu.jsonHelper.JsonHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +33,11 @@ public class UserHttpList {
             HttpResponse<InputStream> response = httpClient.send(request, HttpResponse.BodyHandlers.ofInputStream());
             int statusCode = response.statusCode();
             System.out.println(STR."statusCode retrieved \{statusCode}");
+            response.headers().map().forEach((headers, value) -> System.out.println(STR."\{headers} = \{String.join("," + value)}"));
             List<User> list = Services.parseUsers(response.body());
             for (User user : list) {
                 System.out.println(user);
             }
-
-            response.headers().map().forEach((headers, value)-> System.out.println(headers + " = " + String.join("," + value)));
 
 
         } catch (IOException | InterruptedException e) {
