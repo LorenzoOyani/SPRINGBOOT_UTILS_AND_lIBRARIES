@@ -21,15 +21,15 @@ public class ResponseWriters {
             for (String values : responseHeaders) {
                 outputStream.write(values.getBytes());
             }
-            /*
-              @Func - flatMap - The flat map returns an Optional that checks for nullability,
-             */
+
             final Optional<String> entityString = HttpResponse.getEntity().flatMap(ResponseWriters::getResponseString);
             if (entityString.isPresent()) {
                 final String encoded = new String(entityString.get().getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
                 outputStream.write(("content-length" + encoded.getBytes().length + "\r\n").getBytes());
                 outputStream.write("\r\n".getBytes());
                 outputStream.write(encoded.getBytes());
+            } else {
+                outputStream.write("\r\n".getBytes());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

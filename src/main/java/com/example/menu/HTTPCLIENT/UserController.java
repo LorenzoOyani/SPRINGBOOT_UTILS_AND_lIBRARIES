@@ -22,6 +22,6 @@ public class UserController {
     
     @PostMapping
     public List<User> addUsers(@RequestBody InputStream inputStream){
-        return services.parseUsers(inputStream);
+        return Services.parseUsers(inputStream);
     }
 }

@@ -15,19 +15,23 @@ import java.util.Optional;
 public class HttpResponse {
     @Getter
     @Setter
-    private final Map<String, List<String>> responseHeaders;
+    private Map<String, List<String>> responseHeaders;
     @Getter
     @Setter
     private int statusCode;
     @Getter
     @Setter
-    private  static Optional<Object> entity;
+    private static Optional<Object> entity;
 
     HttpResponse(final Map<String, List<String>> responseHeaders, int statusCode, Optional<Object> entity) {
         this.responseHeaders = responseHeaders;
         this.statusCode = statusCode;
        HttpResponse.entity = entity;
     }
+
+//    public Optional<? extends String> getRealEntity(Object entity) {
+//        if(entity instanceof  of )
+//    }
 
     public static class Builder {
         private static Map<String, List<String>> responseHeaders;
@@ -54,7 +58,7 @@ public class HttpResponse {
         }
 
         public Builder setEntity(final Object object) {
-            if (entity != null) {
+            if (entity.isPresent()) {
                 entity = Optional.of(object);
             }
             return this;
