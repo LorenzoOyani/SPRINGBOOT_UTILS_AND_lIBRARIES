@@ -33,7 +33,7 @@ public class UserHttpList {
             HttpResponse<InputStream> response = httpClient.send(request, HttpResponse.BodyHandlers.ofInputStream());
             int statusCode = response.statusCode();
             System.out.println(STR."statusCode retrieved \{statusCode}");
-            response.headers().map().forEach((headers, value) -> System.out.println(STR."\{headers} = \{String.join("," + value)}"));
+            response.headers().map().forEach((headers, value) -> System.out.println(STR."\{headers} = \{String.join(STR.",\{value}")}"));
             List<User> list = Services.parseUsers(response.body());
             for (User user : list) {
                 System.out.println(user);

@@ -26,7 +26,7 @@ public class UserCredentialsRepo {
         String sql = "insert into USERS(id, user_name, password, email) values (?, ?, ?, ?)";
 
         int rows = jdbcTemplate.update(sql, user.getId(), user.getUsername(), user.getPassword(), user.getEmail());
-        System.out.println(rows + " affected");
+        System.out.println(STR."\{rows} affected");
     }
 
     public List<UserCredentials> findAllUsers() {
